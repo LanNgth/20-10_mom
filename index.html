@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(180deg, #46c6cd 0%, #d4ea8d 100%);
+      background: linear-gradient(180deg, #2f62ae 0%, #e897ed 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,7 +17,7 @@
 
     .phone {
       width: 360px;
-      background: #8fe687;
+      background: #f7abe8;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(12, 24, 48, 0.15);
       padding: 20px;
@@ -134,7 +134,7 @@
     let currentBtn = null;
 
     // Tạo 12 button
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 9; i++) {
       const btn = document.createElement('button');
       btn.className = 'img-btn';
       btn.textContent = i;
@@ -148,19 +148,16 @@
       // 🩷 Nội dung từng ô
       let message = "";
       switch (number) {
-        case 1: message = "💐 Mẹ xinh đẹp chỉ chọn trúng ô 5 ngàn"; break;
-        case 2: message = "🌸 Mẹ xinh đẹp chọn trúng ô 500"; break;
-        case 3: message = "💐 Mẹ xinh đẹp chọn trúng ô 200 ngàn"; break;
-        case 4: message = "🌸 Mẹ xinh đẹp chọn trúng ô 5 triệu"; break;
-        case 5: message = "💐 Mẹ xinh đẹp chọn trúng ô 100 ngàn"; break;
-        case 6: message = "🌸 Mẹ xinh đẹp chọn trúng ô 1 triệu"; break;
-        case 7: message = "💐 Mẹ xinh đẹp chọn trúng ô 10 ngàn"; break;
-        case 8: message = "🌸 Mẹ xinh đẹp chọn trúng ô 20 ngàn"; break;
-        case 9: message = "💐 Mẹ xinh đẹp chọn trúng ô 2 triệu"; break;
-        case 10: message = "🌸 Mẹ xinh đẹp chọn trúng ô 50 ngàn"; break;
-        case 11: message = "💐 Chọn đúng ô không có gì rồi!!!"; break;
-        case 12: message = "🌸 Hôm nay là ngày 20/10, chúc mẹ luôn xinh đẹp, vui vẻ, hạnh phúc nha!"; break;
-        default: message = "🌼 Chúc bạn có một ngày 20/10 tràn ngập niềm vui 💕";
+        case 1: message = "💐 Mẹ xinh đẹp chỉ chọn trúng ô 1 triệu"; break;
+        case 2: message = "🌸 Mẹ xinh đẹp chọn trúng ô 2 triệu"; break;
+        case 3: message = "💐 Mẹ xinh đẹp chọn trúng ô 500 nghìn"; break;
+        case 4: message = "🌸 Mẹ xinh đẹp chọn trúng ô 2 triệu"; break;
+        case 5: message = "💐 Mẹ xinh đẹp chọn đúng ô không có gì rồi!!!"; break;
+        case 6: message = "🌸 Mẹ xinh đẹp chọn đúng ô chỉ có những lời yêu thương mật ngọt hoi, 20/10 chúc mẹ mãi xinh đep, hạnh phúc nha"; break;
+        case 7: message = "💐 Mẹ xinh đẹp chọn trúng ô 1 triệu"; break;
+        case 8: message = "🌸 Mẹ xinh đẹp chọn trúng ô 500 nghìn"; break;
+        case 9: message = "🌸 Trống trơn haha"; break;
+        default: message = "🌼 Chúc mẹ có một ngày 20/10 tràn ngập niềm vui 💕";
       }
 
       document.getElementById('popupText').innerText = message;
@@ -179,4 +176,3 @@
   </script>
 </body>
 </html>
-
