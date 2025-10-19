@@ -39,7 +39,6 @@
       object-fit: contain;
     }
 
-    /* Lưới 12 button */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -65,12 +64,10 @@
       box-shadow: 0 8px 18px rgba(0,0,0,0.15);
     }
 
-    /* Khi ẩn, chỉ làm mờ và tắt click */
     .hidden-btn {
       visibility: hidden;
     }
 
-    /* Popup */
     .popup {
       display: none;
       position: fixed;
@@ -84,17 +81,29 @@
 
     .popup-content {
       background: #fff;
-      padding: 20px;
-      border-radius: 15px;
+      padding: 25px;
+      border-radius: 18px;
       text-align: center;
-      width: 260px;
+      width: 280px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      animation: popupShow 0.3s ease;
+    }
+
+    @keyframes popupShow {
+      from {transform: scale(0.8); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
     }
 
     .popup-content p {
       margin-bottom: 16px;
-      font-size: 16px;
+      font-size: 20px; /* chữ to hơn */
       color: #333;
+      line-height: 1.5;
+    }
+
+    .money {
+      color: red;
+      font-weight: bold;
     }
 
     .close-btn {
@@ -104,11 +113,12 @@
       padding: 8px 18px;
       border-radius: 10px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 15px;
       transition: 0.3s;
     }
+
     .close-btn:hover {
-      opacity: 0.8;
+      opacity: 0.85;
     }
   </style>
 </head>
@@ -121,7 +131,6 @@
     <div class="grid" id="grid"></div>
   </div>
 
-  <!-- Popup -->
   <div id="popup" class="popup">
     <div class="popup-content">
       <p id="popupText"></p>
@@ -133,7 +142,6 @@
     const grid = document.getElementById('grid');
     let currentBtn = null;
 
-    // Tạo 12 button
     for (let i = 1; i <= 9; i++) {
       const btn = document.createElement('button');
       btn.className = 'img-btn';
@@ -144,30 +152,28 @@
 
     function showPopup(number, btn) {
       currentBtn = btn;
-
-      // 🩷 Nội dung từng ô
       let message = "";
+
       switch (number) {
-        case 1: message = "💐 Mẹ xinh đẹp chỉ chọn trúng ô 1 triệu"; break;
-        case 2: message = "🌸 Mẹ xinh đẹp chọn trúng ô 2 triệu"; break;
-        case 3: message = "💐 Mẹ xinh đẹp chọn trúng ô 500 nghìn"; break;
-        case 4: message = "🌸 Mẹ xinh đẹp chọn trúng ô 2 triệu"; break;
+        case 1: message = "💐 Mẹ xinh đẹp chọn trúng ô <span class='money'>1 triệu</span>"; break;
+        case 2: message = "🌸 Mẹ xinh đẹp chọn trúng ô <span class='money'>2 triệu</span>"; break;
+        case 3: message = "💐 Mẹ xinh đẹp chọn trúng ô <span class='money'>500 nghìn</span>"; break;
+        case 4: message = "🌸 Mẹ xinh đẹp chọn trúng ô <span class='money'>2 triệu</span>"; break;
         case 5: message = "💐 Mẹ xinh đẹp chọn đúng ô không có gì rồi!!!"; break;
-        case 6: message = "🌸 Mẹ xinh đẹp chọn đúng ô chỉ có những lời yêu thương mật ngọt hoi, 20/10 chúc mẹ mãi xinh đep, hạnh phúc nha"; break;
-        case 7: message = "💐 Mẹ xinh đẹp chọn trúng ô 1 triệu"; break;
-        case 8: message = "🌸 Mẹ xinh đẹp chọn trúng ô 500 nghìn"; break;
-        case 9: message = "🌸 Trống trơn haha"; break;
+        case 6: message = "🌸 Mẹ xinh đẹp chọn đúng ô chỉ có những lời yêu thương mật ngọt thôi 💕<br>20/10 chúc mẹ mãi xinh đẹp, hạnh phúc nha!"; break;
+        case 7: message = "💐 Mẹ xinh đẹp chọn trúng ô <span class='money'>1 triệu</span>"; break;
+        case 8: message = "🌸 Mẹ xinh đẹp chọn trúng ô <span class='money'>500 nghìn</span>"; break;
+        case 9: message = "🌸 Trống trơn haha 😆"; break;
         default: message = "🌼 Chúc mẹ có một ngày 20/10 tràn ngập niềm vui 💕";
       }
 
-      document.getElementById('popupText').innerText = message;
+      document.getElementById('popupText').innerHTML = message;
       document.getElementById('popup').style.display = 'flex';
     }
 
     function closePopup() {
       document.getElementById('popup').style.display = 'none';
       if (currentBtn) {
-        // Ẩn button nhưng giữ nguyên vị trí trong grid
         currentBtn.classList.add('hidden-btn');
         currentBtn.disabled = true;
         currentBtn = null;
@@ -176,4 +182,3 @@
   </script>
 </body>
 </html>
-
